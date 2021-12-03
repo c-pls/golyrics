@@ -9,13 +9,6 @@ import (
 	"github.com/gocolly/colly/v2"
 )
 
-var countryCode = map[string]string{
-	"en": "english",
-	"vi": "Vietnamese",
-	"jp": "japanese-romaji",
-	"es": "Spanish",
-}
-
 var baseURL = "https://www.musixmatch.com/lyrics/"
 
 func GetLyrics(song, artist string) string {
@@ -35,7 +28,7 @@ func GetLyrics(song, artist string) string {
 
 func GetLyricsWithTranslate(song, artist, codeLang string) map[string]string {
 	m := make(map[string]string)
-	url := baseURL + formatURL(artist) + "/" + formatURL(song) + "/translation" + "/" + countryCode[codeLang]
+	url := baseURL + formatURL(artist) + "/" + formatURL(song) + "/translation" + "/" + CountryCode[codeLang]
 	c := colly.NewCollector()
 	var translation string
 
